@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}OneTraveler{% endblock %}
+
+{% block page_content %}
+    {% if request.user.is_authenticated %}
+        <h1 align=center >Olá {{request.user.username}} </h1>
+        <h5 align=center >Seja bem vindo ao OneTraver, seu portal de viagem!</h5>
+        <!--<form method="POST" class="post-form">
+            {% csrf_token %}
+            <p><b>{{form.body.help_text}}</b></p>      
+            <p>{{ form.body }}</p>
+            <p><button type="submit" class="save btn btn-default">Postar</button></p> -->
+        </form>            
+    {% else %}
+        <h1>Bem vindo ao OneTraveler</h1>
+    {% endif %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="{% url 'index-all' %}" class="nav-link {%if show_followed != 'followed' %}active {%endif%}">Tudo</a>
+        </li>
+        <!--<li class="nav-item">
+            <a href="{% url 'index-followed' %}" class="nav-link  {%if show_followed == 'followed' %}active {%endif%}">Followed</a>
+        </li>-->
+    </ul>
+
+    <h2>Posts</h2>
+    {% include "posts/_posts.html" %}
+    &nbsp
+    &nbsp
+    &nbsp  
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+   
+
+        <div>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+        </li>
+      </ul>
+    
+    </div>
+{% endblock %}
